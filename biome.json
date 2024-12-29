@@ -8,7 +8,7 @@
     "files": {
         "include": ["*.{ts,tsx,js,jsx,json,md,astro}"],
         "ignoreUnknown": false,
-        "ignore": []
+        "ignore": [".git", "node_modules", "dist", "build"]
     },
     "formatter": {
         "enabled": true,
@@ -22,7 +22,33 @@
     "linter": {
         "enabled": true,
         "rules": {
-            "recommended": true
+            "recommended": true,
+            "security": { "all": true },
+            "a11y": { "all": true },
+            "complexity": { "all": true },
+            "performance": {
+                "all": true,
+                "noBarrelFile": "off",
+                "noReExportAll": "off"
+            },
+            "nursery": {
+                "all": true,
+                "useExplicitType": "off",
+                "noProcessEnv": "off",
+                "useSortedClasses": "off",
+                "useComponentExportOnlyModules": "off"
+            },
+            "style": {
+                "useExportType": "warn",
+                "useFilenamingConvention": {
+                    "level": "warn",
+                    "options": {
+                        "filenameCases": ["kebab-case"],
+                        "requireAscii": true,
+                        "strictCase": true
+                    }
+                }
+            }
         }
     },
     "javascript": {
@@ -35,17 +61,5 @@
             "allowComments": true
         }
     },
-    "overrides": [
-        {
-            "include": ["*.astro"],
-            "linter": {
-                "rules": {
-                    "style": {
-                        "useConst": "off",
-                        "useImportType": "off"
-                    }
-                }
-            }
-        }
-    ]
+    "overrides": []
 }

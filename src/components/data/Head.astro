@@ -1,0 +1,67 @@
+---
+import { SEO } from '~/config';
+import Favicon from '~/assets/favicon.svg';
+
+const { title = SEO.title } = Astro.props;
+---
+
+<link
+  rel="sitemap"
+  href="/sitemap-index.xml"
+/>
+<title>{title}</title>
+<meta
+  name="description"
+  content={SEO.description}
+/>
+
+<!-- Configurations -->
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width"
+/>
+<meta
+  name="generator"
+  content={Astro.generator}
+/>
+
+<!-- Web analytics -->
+<script
+  data-goatcounter="https://arthurcm.goatcounter.com/count"
+  is:inline
+  async
+  src="//gc.zgo.at/count.js"
+></script>
+
+<!-- Open Graph tags -->
+<meta
+  property="og:title"
+  content={SEO.title}
+/>
+<meta
+  property="og:type"
+  content={SEO.type}
+/>
+<meta
+  property="og:url"
+  content={SEO.url}
+/>
+<meta
+  property="og:description"
+  content={SEO.description}
+/>
+<meta
+  property="og:image"
+  content={SEO.image}
+/>
+<meta
+  property="og:image:alt"
+  content={SEO.image_alt}
+/>
+
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon.svg"
+/>
