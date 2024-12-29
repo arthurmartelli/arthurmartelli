@@ -1,0 +1,23 @@
+---
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+import Layout from '~/layouts/Layout.astro';
+
+export const getStaticPaths = (async () => {
+  const blog = await getCollection('blog');
+  return blog.map((blog) => ({
+    params: { id: blog.id },
+    props: { blog },
+  }));
+}) satisfies GetStaticPaths;
+
+const { blog } = Astro.props;
+const { Content } = await render(blog);
+---
+
+<Layout>
+  <article class="prose font-display prose-slate lg:prose-xl">
+    <h1 class="text-3xl text-red-500">{blog.data.title}</h1>
+    <Content />
+  </article>
+</Layout>

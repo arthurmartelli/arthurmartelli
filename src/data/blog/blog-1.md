@@ -1,9 +1,25 @@
 ---
-title: "Welcome to my blog"
-author: arthur-campbell # references `src/data/authors/arthur-campbell.json`
-relatedPosts:
-- about-me # references `src/data/blog/about-me.md`
-- my-year-in-review # references `src/data/blog/my-year-in-review.md`
+title: "Go Blog"
+author: arthur-campbell
+slug: go-blog-1
 ---
 
 # About blog 1
+
+Hey there, this is my first blog post.
+
+```js
+console.log('Hello world!');
+```
+
+```python
+def print_hi(name):
+    print(f'Hi, {name}')
+
+print_hi('Arthur')
+```
+
+```js
+function print(text) {
+  console.log(text);
+}

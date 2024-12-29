@@ -5,7 +5,7 @@
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && node ./src/scripts/process-html.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "lint": "biome lint --write .",
@@ -14,10 +14,14 @@
   },
   "dependencies": {
     "astro": "^5.1.1",
+    "globby": "^14.0.2",
+    "html-minifier": "^4.0.0",
+    "jsdom": "^25.0.1",
     "rehype-external-links": "^3.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/typography": "^0.5.15",
     "@tailwindcss/vite": "4.0.0-beta.8",
     "tailwindcss": "4.0.0-beta.8",
     "typescript": "^5.7.2"
