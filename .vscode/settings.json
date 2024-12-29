@@ -1,9 +1,40 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib",
     "cSpell.words": [
         "Filenaming",
         "goatcounter",
         "shiki",
+        "tailwindcss",
         "tsconfigs"
-    ]
+    ],
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[css]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "files.associations": {
+         "*.css": "tailwindcss"
+    },
+    "[mdx]": {
+        "editor.defaultFormatter": "unifiedjs.vscode-mdx"
+    },
+    "tailwindCSS.experimental.classRegex": [
+        ["Classes \\=([^;]*);", "'([^']*)'"],
+        ["Classes \\=([^;]*);", "\"([^\"]*)\""],
+        ["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"]
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports.biome": "always"
+    },
+    "files.eol": "\n"
 }

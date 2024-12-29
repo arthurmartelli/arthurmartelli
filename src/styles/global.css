@@ -1,6 +1,8 @@
+@import "tailwindcss";
+
 @media (prefers-color-scheme: dark) {
     .shiki,
-    .shiki span {
+    .shiki span
     .astro-code,
     .astro-code span {
       color: var(--shiki-dark) !important;
