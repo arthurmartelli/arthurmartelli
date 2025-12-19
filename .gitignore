@@ -1,0 +1,7 @@
+.bakes
+.env*
+!.env.example
+infra/compose.custom.yaml
+node_modules
+dist
+.astro

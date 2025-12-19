@@ -1,0 +1,40 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "include": [
+    ".astro/types.d.ts",
+    "**/*"
+  ],
+  "exclude": [
+    "dist"
+  ],
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./src/*"
+      ]
+    },
+    "types": [
+      "astro/client"
+    ],
+    "jsx": "preserve",
+    "jsxImportSource": "astro/jsx-runtime",
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
+    "moduleResolution": "bundler",
+    "alwaysStrict": true,
+    "allowImportingTsExtensions": true,
+    "strictFunctionTypes": true,
+    "allowUnusedLabels": false,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitOverride": true,
+    "resolveJsonModule": true
+  }
+}
