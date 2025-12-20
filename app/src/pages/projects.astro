@@ -1,0 +1,237 @@
+---
+import BaseHead from "~/components/common/BaseHead.astro";
+import Header from "~/components/layout/Header.astro";
+import Footer from "~/components/layout/Footer.astro";
+
+// Fetch your GitHub repositories
+const username = "arthurmartelli"; // Update with your GitHub username
+let repos = [];
+
+try {
+    const response = await fetch(
+        `https://api.github.com/users/${username}/repos?sort=updated&per_page=100`
+    );
+    if (response.ok) {
+        const allRepos = await response.json();
+        // Filter out forks and sort by stars
+        repos = allRepos
+            .filter((repo) => !repo.fork)
+            .sort((a, b) => b.stargazers_count - a.stargazers_count);
+    }
+} catch (error) {
+    console.error("Failed to fetch GitHub repos:", error);
+}
+---
+
+<html lang="en">
+    <head>
+        <BaseHead
+            title="Projects"
+            description="My GitHub projects and repositories"
+        />
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                min-height: 100dvh;
+                margin: 0;
+            }
+
+            main {
+                flex: 1;
+                width: 100%;
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem 1rem;
+            }
+
+            .page-header {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+
+            .page-header h1 {
+                font-size: clamp(2rem, 5vw, 3rem);
+                margin-bottom: 0.5rem;
+            }
+
+            .page-header p {
+                font-size: clamp(1rem, 2vw, 1.2rem);
+                color: rgb(var(--gray));
+            }
+
+            .projects-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .project-card {
+                background: rgb(var(--gray-light), 0.3);
+                border: 1px solid rgb(var(--gray-light));
+                border-radius: 12px;
+                padding: 1.5rem;
+                display: flex;
+                flex-direction: column;
+                transition: all 0.3s ease;
+            }
+
+            .project-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+                border-color: rgb(var(--accent));
+            }
+
+            .project-header {
+                display: flex;
+                align-items: flex-start;
+                justify-content: space-between;
+                margin-bottom: 1rem;
+            }
+
+            .project-card h3 {
+                margin: 0;
+                font-size: 1.3rem;
+                color: var(--accent);
+            }
+
+            .project-card h3 a {
+                text-decoration: none;
+                color: var(--accent);
+            }
+
+            .project-card h3 a:hover {
+                text-decoration: underline;
+            }
+
+            .project-stats {
+                display: flex;
+                gap: 1rem;
+                font-size: 0.9rem;
+                color: rgb(var(--gray));
+                align-items: center;
+            }
+
+            .stat {
+                display: flex;
+                align-items: center;
+                gap: 0.3rem;
+            }
+
+            .project-description {
+                color: rgb(var(--gray-dark));
+                flex: 1;
+                margin-bottom: 1rem;
+                line-height: 1.6;
+            }
+
+            .project-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: auto;
+                padding-top: 1rem;
+                border-top: 1px solid rgb(var(--gray-light));
+            }
+
+            .language {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.9rem;
+                color: rgb(var(--gray-dark));
+            }
+
+            .language-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: var(--accent);
+            }
+
+            .updated {
+                font-size: 0.85rem;
+                color: rgb(var(--gray));
+            }
+
+            .no-repos {
+                text-align: center;
+                padding: 3rem 1rem;
+                color: rgb(var(--gray));
+            }
+
+            @media (max-width: 640px) {
+                .projects-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <Header />
+
+        <main>
+            <div class="page-header">
+                <h1>My Projects</h1>
+                <p>Open source repositories and personal projects</p>
+            </div>
+
+            {
+                repos.length > 0 ? (
+                    <div class="projects-grid">
+                        {repos.map((repo) => (
+                            <div class="project-card">
+                                <div class="project-header">
+                                    <h3>
+                                        <a
+                                            href={repo.html_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {repo.name}
+                                        </a>
+                                    </h3>
+                                </div>
+
+                                <div class="project-stats">
+                                    <span class="stat">
+                                        ⭐ {repo.stargazers_count}
+                                    </span>
+                                    <span class="stat">
+                                        🔀 {repo.forks_count}
+                                    </span>
+                                </div>
+
+                                <p class="project-description">
+                                    {repo.description || "No description available"}
+                                </p>
+
+                                <div class="project-footer">
+                                    {repo.language && (
+                                        <div class="language">
+                                            <span class="language-dot" />
+                                            {repo.language}
+                                        </div>
+                                    )}
+                                    <span class="updated">
+                                        Updated{" "}
+                                        {new Date(
+                                            repo.updated_at
+                                        ).toLocaleDateString()}
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div class="no-repos">
+                        <p>No repositories found or failed to load.</p>
+                    </div>
+                )
+            }
+        </main>
+
+        <Footer />
+    </body>
+</html>

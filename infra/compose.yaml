@@ -1,27 +1,4 @@
 services:
   app:
-    image: ${APP_IMAGE?}
-    platform: linux/amd64
-    tty: true
-    env_file:
-      - ../.env
-    build:
-      context: ..
-      target: ${APP_TARGET}
-      dockerfile: ${COMPOSE_DIR}/Dockerfile
-      args:
-        APP_USER_ID: ${APP_USER_ID:-65534}
-        APP_GROUP_ID: ${APP_GROUP_ID:-65534}
-      ssh:
-        - default=${SSH_AUTH_SOCK}
-    environment:
-      SSH_AUTH_SOCK: /run/ssh.sock
     ports:
       - ${HOST_PORT}:4321
-    volumes:
-      - ../app:/opt/app
-      - home-cache:/opt
-      - ${SSH_AUTH_SOCK}:/run/ssh.sock
-
-volumes:
-  home-cache:

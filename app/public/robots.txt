@@ -1,0 +1,7 @@
+# https://arthurcm.com/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://arthurcm.com/sitemap-index.xml
+Sitemap: https://arthurcm.com/rss.xml

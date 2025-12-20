@@ -1,0 +1,17 @@
+---
+import Layout from "~/layouts/BlogPost.astro";
+import { EMAIL, PHONE } from "~/consts";
+
+const description =
+  "Let's create something amazing together! Reach out to me via email or phone for collaborations, inquiries, or just to say hi";
+const cleanPhone = PHONE.replace(/[\s\-\(\)]/g, ""); // remove all spaces, dashes, and parentheses
+---
+
+<Layout title="Contact Me" description={description}>
+  <p>{description}</p>
+
+  <div class="contact-methods">
+    <p><strong>Email:</strong> <a href={`mailto:${EMAIL}`}>{EMAIL}</a></p>
+    <p><strong>Phone:</strong> <a href={`tel:${cleanPhone}`}>{PHONE}</a></p>
+  </div>
+</Layout>

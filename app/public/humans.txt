@@ -1,0 +1,12 @@
+# humanstxt.org
+
+/* TEAM */
+Developer: Arthur Martelli
+Site: https://arthurcm.com
+Email: arthur.martellig@gmail.com
+Location: Earth
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+Components: Astro
+Software: NeoVim

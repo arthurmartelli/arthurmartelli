@@ -12,7 +12,7 @@ export BAKES_FILES    := $(addprefix $(BAKES_MAKE_DIR)/,$(addsuffix .mk,$(BAKES_
 
 $(BAKES_MAKE_DIR)/%.mk:
 	@mkdir -p $(dir $@)
-	@curl -sSL "$(BAKES_GIT_URL)/makefiles/$(notdir $@)" -o $@
+	@curl -sSL "$(BAKES_GIT_URL)/makefiles/$(patsubst $(BAKES_MAKE_DIR)/%,%,$@)" -o $@
 
 include $(BAKES_FILES)
 

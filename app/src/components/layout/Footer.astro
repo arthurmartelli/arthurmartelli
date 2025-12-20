@@ -1,0 +1,41 @@
+---
+import { COPYRIGHT } from "~/consts.ts";
+import SocialLinks from "~/components/ui/SocialLinks.astro";
+---
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <p class="copyright">
+      &copy; {COPYRIGHT}
+    </p>
+
+    <SocialLinks />
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    padding: 1rem;
+    background-color: var(--gray-dark, #13151a);
+    color: var(--gray-light, #9ca3af);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    @media (min-width: 640px) {
+      flex-direction: row-reverse; /* Icons on one side, text on the other */
+      justify-content: space-between;
+    }
+  }
+
+  .copyright {
+    font-size: 0.875rem;
+    opacity: 0.8;
+  }
+</style>

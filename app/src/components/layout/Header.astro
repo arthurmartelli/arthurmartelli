@@ -1,0 +1,56 @@
+---
+import HeaderLink from "~/components/navigation/HeaderLink.astro";
+import Logo from "~/components/ui/Logo.astro";
+import SocialLinks from "~/components/ui/SocialLinks.astro";
+---
+
+<header>
+	<nav>
+		<h2><Logo /></h2>
+		<div class="internal-links">
+			<HeaderLink href="/">Home</HeaderLink>
+			<HeaderLink href="/blog">Blog</HeaderLink>
+			<HeaderLink href="/projects">Projects</HeaderLink>
+			<HeaderLink href="/contact">Contact</HeaderLink>
+		</div>
+		<SocialLinks />
+	</nav>
+</header>
+
+<style>
+	header {
+		margin: 0;
+		padding: 0 1em;
+		background: white;
+		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+
+		@media (prefers-color-scheme: dark) {
+			background: rgba(var(--black), 5%);
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+		}
+	}
+	h2 {
+		margin: 0;
+		font-size: 1em;
+		align-items: center;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a {
+		padding: 1em 0.5em;
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+</style>
