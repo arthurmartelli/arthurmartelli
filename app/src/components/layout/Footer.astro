@@ -32,10 +32,17 @@ import SocialLinks from "~/components/ui/SocialLinks.astro";
       flex-direction: row-reverse; /* Icons on one side, text on the other */
       justify-content: space-between;
     }
+
+    @media (max-width: 640px) {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
   }
 
   .copyright {
     font-size: 0.875rem;
     opacity: 0.8;
+    margin: 0;
   }
 </style>

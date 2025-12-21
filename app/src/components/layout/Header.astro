@@ -20,7 +20,7 @@ import SocialLinks from "~/components/ui/SocialLinks.astro";
 <style>
 	header {
 		margin: 0;
-		padding: 0 1em;
+		padding: 0 1rem;
 		background: white;
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
 
@@ -43,6 +43,13 @@ import SocialLinks from "~/components/ui/SocialLinks.astro";
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+	.internal-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.25rem;
 	}
 	nav a {
 		padding: 1em 0.5em;
@@ -52,5 +59,24 @@ import SocialLinks from "~/components/ui/SocialLinks.astro";
 	nav a.active {
 		text-decoration: none;
 		border-bottom-color: var(--accent);
+	}
+
+	@media (max-width: 640px) {
+		header {
+			padding: 0.5rem;
+		}
+		nav {
+			gap: 0.5rem;
+		}
+		.internal-links {
+			order: 3;
+			width: 100%;
+			justify-content: center;
+			gap: 0.5rem;
+		}
+		nav a {
+			padding: 0.75rem 0.5rem;
+			font-size: 0.9rem;
+		}
 	}
 </style>

@@ -1,0 +1,89 @@
+---
+// Blog grid with special layout for first item
+---
+
+<section class="blog-grid">
+  <slot />
+</section>
+
+<style>
+  .blog-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .blog-grid :global(li) {
+    width: calc(50% - 1rem);
+  }
+
+  .blog-grid :global(li *) {
+    text-decoration: none;
+    transition: 0.2s ease;
+  }
+
+  .blog-grid :global(li:first-child) {
+    width: 100%;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .blog-grid :global(li:first-child img) {
+    width: 100%;
+  }
+
+  .blog-grid :global(li:first-child .title) {
+    font-size: 2.369rem;
+  }
+
+  .blog-grid :global(li img) {
+    margin-bottom: 0.5rem;
+    border-radius: 12px;
+  }
+
+  .blog-grid :global(li a) {
+    display: block;
+  }
+
+  .blog-grid :global(.title) {
+    margin: 0;
+    color: rgb(var(--black));
+    line-height: 1;
+  }
+
+  .blog-grid :global(.date) {
+    margin: 0;
+    color: rgb(var(--gray));
+  }
+
+  .blog-grid :global(li a:hover h4),
+  .blog-grid :global(li a:hover .date) {
+    color: var(--accent);
+  }
+
+  .blog-grid :global(a:hover img) {
+    box-shadow: var(--box-shadow);
+  }
+
+  @media (max-width: 720px) {
+    .blog-grid {
+      gap: 0.5rem;
+    }
+
+    .blog-grid :global(li) {
+      width: 100%;
+      text-align: center;
+    }
+
+    .blog-grid :global(li:first-child) {
+      margin-bottom: 0;
+    }
+
+    .blog-grid :global(li:first-child .title) {
+      font-size: 1.563rem;
+    }
+  }
+</style>

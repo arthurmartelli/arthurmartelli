@@ -1,0 +1,38 @@
+---
+interface Props {
+  columns?: number | "auto";
+  gap?: "small" | "medium" | "large";
+}
+
+const { columns = "auto", gap = "medium" } = Astro.props;
+
+const gapSizes = {
+  small: "1rem",
+  medium: "1.5rem",
+  large: "2rem",
+};
+
+const gridStyle =
+  columns === "auto"
+    ? "repeat(auto-fit, minmax(280px, 1fr))"
+    : `repeat(${columns}, 1fr)`;
+---
+
+<section class="card-grid" style={`--grid-columns: ${gridStyle}; --grid-gap: ${gapSizes[gap]};`}>
+  <slot />
+</section>
+
+<style>
+  .card-grid {
+    display: grid;
+    grid-template-columns: var(--grid-columns);
+    gap: var(--grid-gap);
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .card-grid {
+      gap: 1rem;
+    }
+  }
+</style>

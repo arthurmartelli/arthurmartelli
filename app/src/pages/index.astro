@@ -1,219 +1,48 @@
 ---
-import BaseHead from "~/components/common/BaseHead.astro";
-import Header from "~/components/layout/Header.astro";
-import Footer from "~/components/layout/Footer.astro";
-import { NAME, EMAIL } from "~/consts.ts";
+import PageLayout from "~/layouts/PageLayout.astro";
+import Hero from "~/components/sections/Hero.astro";
+import CardGrid from "~/components/sections/CardGrid.astro";
+import Button from "~/components/ui/Button.astro";
+import Card from "~/components/ui/Card.astro";
+import { NAME } from "~/consts.ts";
 ---
 
-<html lang="en">
-    <head>
-        <BaseHead
-            title="Home"
-            description="Arthur Campbell - Programmer, automation enthusiast, and homelab tinkerer"
-        />
-        <style>
-            body {
-                display: flex;
-                flex-direction: column;
-                min-height: 100dvh;
-                margin: 0;
-            }
+<PageLayout
+    title="Home"
+    description="Arthur Campbell - Programmer, automation enthusiast, and homelab tinkerer"
+    maxWidth="wide"
+>
+    <Hero
+        greeting="👋 Hi there!"
+        title={`I'm ${NAME}`}
+        subtitle="Programmer • Automation Enthusiast • Homelab Tinkerer"
+        description="I love building things that make life more bearable, exploring new technologies, and diving deep into the world of automation. Currently working on my homelab with an IncusOS-based K8S RKE2 cluster and a DIY NAS."
+    >
+        <Button href="/blog">Read My Blog</Button>
+        <Button href="/projects">View Projects</Button>
+        <Button href="/contact" variant="secondary">Get In Touch</Button>
+    </Hero>
 
-            main {
-                flex: 1;
-                width: 100%;
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 2rem 1rem;
-            }
+    <CardGrid>
+        <Card icon="🤖" title="Automation Lover">
+            <p>
+                Passionate about streamlining workflows and creating efficient
+                solutions that save time and reduce manual work.
+            </p>
+        </Card>
 
-            .hero {
-                text-align: center;
-                padding: 2rem 1rem 2rem;
-                position: relative;
-            }
+        <Card icon="🏠" title="Homelab Explorer">
+            <p>
+                Building and managing my own infrastructure with Kubernetes,
+                containerization, and self-hosted services.
+            </p>
+        </Card>
 
-            .greeting {
-                font-size: clamp(1rem, 2vw, 1.2rem);
-                color: rgb(var(--accent));
-                font-weight: 600;
-                margin-bottom: 0.5rem;
-            }
-
-            h1 {
-                font-size: clamp(2.5rem, 8vw, 4.5rem);
-                margin: 0 0 0.5rem 0;
-                line-height: 1.1;
-                color: rgb(var(--black));
-            }
-
-            .tagline {
-                font-size: clamp(1.2rem, 3vw, 1.8rem);
-                color: rgb(var(--gray));
-                margin-bottom: 1rem;
-            }
-
-            .description {
-                font-size: clamp(1rem, 2vw, 1.1rem);
-                color: rgb(var(--gray-dark));
-                max-width: 600px;
-                margin: 0 auto 1.5rem;
-                line-height: 1.7;
-            }
-
-            .cta-buttons {
-                display: flex;
-                gap: 1rem;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .btn {
-                display: inline-block;
-                padding: 0.9rem 2rem;
-                border-radius: 8px;
-                font-weight: 600;
-                text-decoration: none;
-                transition: all 0.3s ease;
-                font-size: 1rem;
-            }
-
-            .btn-primary {
-                background: rgb(var(--accent));
-                color: white;
-                box-shadow: 0 4px 14px rgba(var(--accent), 0.3);
-            }
-
-            .btn-primary:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 6px 20px rgba(var(--accent), 0.4);
-            }
-
-            .btn-secondary {
-                background: transparent;
-                color: rgb(var(--accent));
-                border: 2px solid rgb(var(--accent));
-            }
-
-            .btn-secondary:hover {
-                background: rgb(var(--accent));
-                color: white;
-                transform: translateY(-2px);
-            }
-
-            .features {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                gap: 1.5rem;
-                padding: 1.5rem 1rem;
-                margin-top: 1.5rem;
-            }
-
-            .feature-card {
-                background: rgb(var(--gray-light), 0.3);
-                padding: 1.5rem;
-                border-radius: 12px;
-                border: 1px solid rgb(var(--gray-light));
-                transition: all 0.3s ease;
-            }
-
-            .feature-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-                border-color: rgb(var(--accent));
-            }
-
-            .feature-icon {
-                font-size: 2.5rem;
-                margin-bottom: 0.5rem;
-            }
-
-            .feature-card h3 {
-                margin: 0 0 0.5rem 0;
-                color: rgb(var(--accent-dark));
-                font-size: 1.3rem;
-            }
-
-            .feature-card p {
-                margin: 0;
-                color: rgb(var(--gray-dark));
-                line-height: 1.6;
-            }
-
-            @media (max-width: 640px) {
-                .hero {
-                    padding: 1.5rem 1rem 1.5rem;
-                }
-
-                .cta-buttons {
-                    flex-direction: column;
-                    align-items: stretch;
-                }
-
-                .btn {
-                    width: 100%;
-                    text-align: center;
-                }
-            }
-        </style>
-    </head>
-
-    <body>
-        <Header />
-
-        <main>
-            <section class="hero">
-                <div class="greeting">👋 Hi there!</div>
-                <h1>I'm {NAME}</h1>
-                <p class="tagline">
-                    Programmer • Automation Enthusiast • Homelab Tinkerer
-                </p>
-                <p class="description">
-                    I love building things that make life more bearable,
-                    exploring new technologies, and diving deep into the world
-                    of automation. Currently working on my homelab with an
-                    IncusOS-based K8S RKE2 cluster and a DIY NAS.
-                </p>
-                <div class="cta-buttons">
-                    <a href="/blog" class="btn btn-primary">Read My Blog</a>
-                    <a href="/projects" class="btn btn-primary">View Projects</a>
-                    <a href="/contact" class="btn btn-secondary"
-                        >Get In Touch</a
-                    >
-                </div>
-            </section>
-
-            <section class="features">
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>Automation Lover</h3>
-                    <p>
-                        Passionate about streamlining workflows and creating
-                        efficient solutions that save time and reduce manual
-                        work.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🏠</div>
-                    <h3>Homelab Explorer</h3>
-                    <p>
-                        Building and managing my own infrastructure with
-                        Kubernetes, containerization, and self-hosted services.
-                    </p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <h3>Continuous Learner</h3>
-                    <p>
-                        Always exploring new technologies, improving skills,
-                        and sharing knowledge with the community.
-                    </p>
-                </div>
-            </section>
-        </main>
-
-        <Footer />
-    </body>
-</html>
+        <Card icon="💡" title="Continuous Learner">
+            <p>
+                Always exploring new technologies, improving skills, and sharing
+                knowledge with the community.
+            </p>
+        </Card>
+    </CardGrid>
+</PageLayout>
