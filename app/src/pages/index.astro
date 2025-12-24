@@ -4,7 +4,7 @@ import Hero from "~/components/sections/Hero.astro";
 import CardGrid from "~/components/sections/CardGrid.astro";
 import Button from "~/components/ui/Button.astro";
 import Card from "~/components/ui/Card.astro";
-import { NAME } from "~/consts.ts";
+import { AUTHOR } from "~/consts";
 ---
 
 <PageLayout
@@ -13,10 +13,9 @@ import { NAME } from "~/consts.ts";
     maxWidth="wide"
 >
     <Hero
-        greeting="👋 Hi there!"
-        title={`I'm ${NAME}`}
+        title={`I'm ${AUTHOR.name}`}
         subtitle="Programmer • Automation Enthusiast • Homelab Tinkerer"
-        description="I love building things that make life more bearable, exploring new technologies, and diving deep into the world of automation. Currently working on my homelab with an IncusOS-based K8S RKE2 cluster and a DIY NAS."
+        description="I love building things that make life more bearable, exploring new technologies, and diving deep into the world of automation."
     >
         <Button href="/blog">Read My Blog</Button>
         <Button href="/projects">View Projects</Button>

@@ -1,16 +1,17 @@
 ---
 interface Props {
-  greeting?: string;
   title: string;
   subtitle?: string;
   description?: string;
 }
 
-const { greeting, title, subtitle, description } = Astro.props;
+const { title, subtitle, description } = Astro.props;
 ---
 
 <section class="hero">
-  {greeting && <div class="hero-greeting">{greeting}</div>}
+  <div class="hero-greeting">
+    <img src="/favicon.svg" alt="" /> Hi there!
+  </div>
   <h1 class="hero-title">{title}</h1>
   {subtitle && <p class="hero-subtitle">{subtitle}</p>}
   {description && <p class="hero-description">{description}</p>}
@@ -23,13 +24,27 @@ const { greeting, title, subtitle, description } = Astro.props;
   .hero {
     text-align: center;
     padding: 2rem 0;
+
+    @media (max-width: 640px) {
+      padding: 1.5rem 0;
+    }
   }
 
   .hero-greeting {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(2.5rem, 2vw, 4rem);
     color: var(--accent);
     font-weight: 600;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    & img {
+      width: 1em;
+      height: 1em;
+      vertical-align: middle;
+    }
   }
 
   .hero-title {
@@ -58,14 +73,8 @@ const { greeting, title, subtitle, description } = Astro.props;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-  }
 
-  @media (max-width: 640px) {
-    .hero {
-      padding: 1.5rem 0;
-    }
-
-    .hero-actions {
+    @media (max-width: 640px) {
       flex-direction: column;
       align-items: stretch;
       gap: 0.75rem;

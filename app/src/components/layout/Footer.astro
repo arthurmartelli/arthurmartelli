@@ -1,12 +1,15 @@
 ---
-import { COPYRIGHT } from "~/consts.ts";
+import { AUTHOR } from "~/consts";
 import SocialLinks from "~/components/ui/SocialLinks.astro";
+
+const today = new Date();
+const copyright = `${today.getFullYear()} ${AUTHOR.name}. All rights reserved.`;
 ---
 
 <footer class="site-footer">
   <div class="footer-container">
     <p class="copyright">
-      &copy; {COPYRIGHT}
+      &copy; {copyright}
     </p>
 
     <SocialLinks />

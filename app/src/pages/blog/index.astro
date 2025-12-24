@@ -4,14 +4,14 @@ import { getCollection } from "astro:content";
 import PageLayout from "~/layouts/PageLayout.astro";
 import BlogGrid from "~/components/sections/BlogGrid.astro";
 import FormattedDate from "~/components/ui/FormattedDate.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "~/consts";
+import { SITE } from "~/consts";
 
 const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 ---
 
-<PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION} maxWidth="medium">
+<PageLayout title={SITE.title} description={SITE.description} maxWidth="medium">
     <BlogGrid>
         {
             posts.map((post) => (

@@ -29,12 +29,26 @@ const Tag = href ? "a" : "div";
     flex-direction: column;
     text-decoration: none;
     color: inherit;
-  }
 
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border-color: var(--accent);
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-color: var(--accent);
+    }
+
+    & h3 {
+      margin: 0 0 0.5rem 0;
+      color: var(--accent-dark);
+      font-size: 1.3rem;
+    }
+
+    &:is(a) h3 {
+      color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      padding: 1.25rem;
+    }
   }
 
   .card-icon {
@@ -42,24 +56,8 @@ const Tag = href ? "a" : "div";
     margin-bottom: 0.5rem;
   }
 
-  .card h3 {
-    margin: 0 0 0.5rem 0;
-    color: var(--accent-dark);
-    font-size: 1.3rem;
-  }
-
   .card-content {
     color: rgb(var(--gray-dark));
     line-height: 1.6;
-  }
-
-  a.card h3 {
-    color: var(--accent);
-  }
-
-  @media (max-width: 640px) {
-    .card {
-      padding: 1.25rem;
-    }
   }
 </style>
