@@ -1,13 +1,16 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import type { ImageMetadata } from "astro";
 
 interface Props {
   title: string;
   description: string;
   maxWidth?: "narrow" | "medium" | "wide";
+  image?: ImageMetadata;
+  imageAlt?: string;
 }
 
-const { title, description, maxWidth = "medium" } = Astro.props;
+const { title, description, maxWidth = "medium", image, imageAlt } = Astro.props;
 
 const maxWidthMap = {
   narrow: "720px",
@@ -16,7 +19,7 @@ const maxWidthMap = {
 };
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={image} imageAlt={imageAlt}>
   <main class={`max-width-${maxWidth}`}>
     <slot />
   </main>

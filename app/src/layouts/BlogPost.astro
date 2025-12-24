@@ -12,7 +12,15 @@ type Props = Omit<CollectionEntry<"blog">["data"], "pubDate"> & {
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout 
+    title={title} 
+    description={description}
+    image={heroImage}
+    imageAlt={title}
+    type="article"
+    publishedTime={pubDate}
+    updatedTime={updatedDate}
+>
     <main>
         <article>
             {

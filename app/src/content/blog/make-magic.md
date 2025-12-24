@@ -505,4 +505,4 @@ cat Makefile  # Read the source
 make help     # See what's possible
 ```
 
-The quirks are features. Embrace them. 🚀
+The quirks are features. Embrace them.

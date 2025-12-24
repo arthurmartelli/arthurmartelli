@@ -5,7 +5,8 @@ const today = new Date();
 
 export const SITE = {
 	title: "arthurcm.com",
-	description: "Welcome to my blog!",
+	description: "Software engineering insights, infrastructure tooling, and developer experience articles by Arthur Campbell Martelli.",
+	twitterHandle: "@arthur_campbell",
 } as const;
 
 export const AUTHOR = {
