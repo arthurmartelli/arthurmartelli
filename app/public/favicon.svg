@@ -1,16 +1,16 @@
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <style>
     /* Default for Light Mode */
-    :root { --icon-color: #1a1a1a; --accent: #6366f1; }
+    :root { --icon-color: #1a1a1a; --color-accent: #6366f1; }
 
     /* Switch for Dark Mode */
     @media (prefers-color-scheme: dark) {
-      :root { --icon-color: #ffffff; --accent: #818cf8; }
+      :root { --icon-color: #ffffff; --color-accent: #818cf8; }
     }
 
     .main-stroke { stroke: var(--icon-color); }
     .cursor { 
-      stroke: var(--accent);
+      stroke: var(--color-accent);
       animation: blink 1s step-end infinite;
     }
     @keyframes blink { 50% { opacity: 0; } }

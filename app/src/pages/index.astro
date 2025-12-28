@@ -1,28 +1,26 @@
 ---
-import PageLayout from "~/layouts/PageLayout.astro";
+import "~/styles/displays.css";
 import Hero from "~/components/sections/Hero.astro";
-import CardGrid from "~/components/sections/CardGrid.astro";
 import Button from "~/components/ui/Button.astro";
 import Card from "~/components/ui/Card.astro";
 import { AUTHOR } from "~/consts";
+import BaseLayout from "~/layouts/BaseLayout.astro";
 ---
 
-<PageLayout
+<BaseLayout
     title="Home"
     description="Arthur Campbell - Programmer, automation enthusiast, and homelab tinkerer"
-    maxWidth="wide"
 >
     <Hero
         title={`I'm ${AUTHOR.name}`}
-        subtitle="Programmer • Automation Enthusiast • Homelab Tinkerer"
-        description="I love building things that make life more bearable, exploring new technologies, and diving deep into the world of automation."
+        description="I like building things that make life more bearable"
     >
         <Button href="/blog">Read My Blog</Button>
         <Button href="/projects">View Projects</Button>
         <Button href="/contact" variant="secondary">Get In Touch</Button>
     </Hero>
 
-    <CardGrid>
+    <div display-container-grid>
         <Card icon="🤖" title="Automation Lover">
             <p>
                 Passionate about streamlining workflows and creating efficient
@@ -44,4 +42,12 @@ import { AUTHOR } from "~/consts";
             </p>
         </Card>
     </CardGrid>
-</PageLayout>
+</BaseLayout>
+
+<style>
+    [display-container-grid] {
+        --columns: 3;
+        gap: var(--spacing-medium);
+        margin-top: var(--spacing-medium);
+    }
+</style>

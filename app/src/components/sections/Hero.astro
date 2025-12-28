@@ -1,83 +1,42 @@
 ---
-interface Props {
-  title: string;
-  subtitle?: string;
-  description?: string;
-}
+import "~/styles/displays.css";
+import Logo from "~/components/ui/Logo.astro";
 
-const { title, subtitle, description } = Astro.props;
+type Props = {
+  title: string;
+  description?: string;
+  disableLogo?: boolean;
+};
+
+const { title, description, disableLogo } = Astro.props;
 ---
 
-<section class="hero">
-  <div class="hero-greeting">
-    <img src="/favicon.svg" alt="" /> Hi there!
+<section display-simple-flex style={{flexDirection: "column"}}>
+  <div class="hero-text">
+    <h1>
+      {title}
+      {
+        disableLogo ? null : (
+          <Logo
+            image={{ size: "1em" }}
+            text={{ hidden: true }}
+            disableLink={true}
+          />
+        )
+      }
+    </h1>
+    {description && <strong>{description}</strong>}
   </div>
-  <h1 class="hero-title">{title}</h1>
-  {subtitle && <p class="hero-subtitle">{subtitle}</p>}
-  {description && <p class="hero-description">{description}</p>}
-  <div class="hero-actions">
-    <slot />
-  </div>
+
+  <div display-simple-flex><slot /></div>
 </section>
 
 <style>
-  .hero {
+  .hero-text {
+    flex-direction: column;
+  }
+
+  [display-simple-flex] {
     text-align: center;
-    padding: 2rem 0;
-
-    @media (max-width: 640px) {
-      padding: 1.5rem 0;
-    }
-  }
-
-  .hero-greeting {
-    font-size: clamp(2.5rem, 2vw, 4rem);
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-
-    & img {
-      width: 1em;
-      height: 1em;
-      vertical-align: middle;
-    }
-  }
-
-  .hero-title {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    margin: 0 0 0.5rem 0;
-    line-height: 1.1;
-    color: rgb(var(--black));
-  }
-
-  .hero-subtitle {
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: rgb(var(--gray));
-    margin-bottom: 1rem;
-  }
-
-  .hero-description {
-    font-size: clamp(1rem, 2vw, 1.1rem);
-    color: rgb(var(--gray-dark));
-    max-width: 600px;
-    margin: 0 auto 1.5rem;
-    line-height: 1.7;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    @media (max-width: 640px) {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.75rem;
-    }
   }
 </style>

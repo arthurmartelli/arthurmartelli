@@ -1,31 +1,18 @@
 {
   "extends": "astro/tsconfigs/strict",
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ],
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"],
   "compilerOptions": {
     "strictNullChecks": true,
     "noImplicitAny": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./src/*"
-      ]
+      "~/*": ["./src/*"]
     },
-    "types": [
-      "astro/client"
-    ],
+    "types": ["astro/client"],
     "jsx": "preserve",
     "jsxImportSource": "astro/jsx-runtime",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "moduleResolution": "bundler",
     "alwaysStrict": true,
     "allowImportingTsExtensions": true,

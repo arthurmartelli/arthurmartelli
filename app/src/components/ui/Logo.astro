@@ -1,14 +1,31 @@
 ---
 import { SITE } from "~/consts";
+
+type Props = {
+  image?: { size?: string };
+  text?: { hidden?: boolean };
+  disableLink?: boolean;
+};
+
+const { image = {}, text = {}, disableLink = false } = Astro.props;
+
+const imageStyle = {
+  width: image.size || "auto",
+};
+
+const Element = disableLink ? "div" : "a";
 ---
 
-<a href="/"><img src="/favicon.svg" /><p>{SITE.title}</p></a>
+<Element class="logo" href={disableLink ? undefined : '/'}>
+  <img src="/favicon.svg" style={imageStyle} />
+  {!text.hidden && <b>{SITE.title}</b>}
+</Element>
 
 <style>
-  a {
-    display: flex;
+  .logo {
+    display: inline-flex;
     align-items: center;
+    justify-items: center;
     text-decoration: none;
-    justify-content: center;
   }
 </style>

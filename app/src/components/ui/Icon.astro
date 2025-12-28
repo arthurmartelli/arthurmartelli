@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { getIcon } from "~/utils/icons";
+
+type Props = HTMLAttributes<"svg"> & {
+  icon: string;
+};
+
+const { icon, ...svgProps } = Astro.props;
+const { path, viewBox } = getIcon(icon);
+
+if (!svgProps.fill) svgProps.fill = "currentColor";
+if (!svgProps.width) svgProps.width = "32";
+if (!svgProps.height) svgProps.height = "32";
+if (!svgProps.viewBox) svgProps.viewBox = viewBox;
+---
+
+<svg {...svgProps} set:html={path} />

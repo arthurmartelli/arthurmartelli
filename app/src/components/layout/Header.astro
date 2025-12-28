@@ -1,88 +1,26 @@
 ---
+import "~/styles/displays.css";
+
 import HeaderLink from "~/components/navigation/HeaderLink.astro";
 import Logo from "~/components/ui/Logo.astro";
-import SocialLinks from "~/components/ui/SocialLinks.astro";
 ---
 
 <header>
-	<nav>
-		<h2><Logo /></h2>
-		<div class="internal-links">
+	<nav display-container-grid>
+		<Logo />
+		<div display-simple-flex>
 			<HeaderLink href="/">Home</HeaderLink>
 			<HeaderLink href="/blog">Blog</HeaderLink>
 			<HeaderLink href="/projects">Projects</HeaderLink>
 			<HeaderLink href="/contact">Contact</HeaderLink>
 		</div>
-		<SocialLinks />
 	</nav>
+	<hr />
 </header>
 
 <style>
-	header {
-		margin: 0;
-		padding: 0 1rem;
-		background: white;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
-
-		@media (prefers-color-scheme: dark) {
-			background: rgba(var(--black), 5%);
-			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-		}
-
-		@media (max-width: 640px) {
-			padding: 0.5rem;
-		}
-	}
-
-	h2 {
-		margin: 0;
-		font-size: 1em;
-		align-items: center;
-
-		& a,
-		& a.active {
-			text-decoration: none;
-		}
-	}
-
-	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-
-		& a {
-			padding: 1em 0.5em;
-			border-bottom: 4px solid transparent;
-			text-decoration: none;
-
-			&.active {
-				text-decoration: none;
-				border-bottom-color: var(--accent);
-			}
-
-			@media (max-width: 640px) {
-				padding: 0.75rem 0.5rem;
-				font-size: 0.9rem;
-			}
-		}
-
-		@media (max-width: 640px) {
-			gap: 0.5rem;
-		}
-	}
-
-	.internal-links {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.25rem;
-
-		@media (max-width: 640px) {
-			order: 3;
-			width: 100%;
-			justify-content: center;
-			gap: 0.5rem;
-		}
+	[display-container-grid] {
+		--columns: 2;
+		padding-top: var(--spacing-small);
 	}
 </style>

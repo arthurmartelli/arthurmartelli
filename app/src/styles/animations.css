@@ -1,0 +1,8 @@
+[animation-hover] {
+  transition: 0.2s ease;
+
+  &:hover,
+  &:active {
+    transform: translateY(calc(-1 * var(--spacing-small)));
+  }
+}

@@ -1,58 +1,42 @@
 ---
-interface Props {
+import "~/styles/animations.css";
+
+type Props = {
   href: string;
   variant?: "primary" | "secondary";
-  fullWidth?: boolean;
-}
+};
 
-const { href, variant = "primary", fullWidth = false } = Astro.props;
+const { href, variant = "primary" } = Astro.props;
 ---
 
-<a href={href} class={`btn btn-${variant} ${fullWidth ? 'full-width' : ''}`}>
+<a href={href} animation-hover class={`btn btn-${variant}`}>
   <slot />
 </a>
 
 <style>
   .btn {
     display: inline-block;
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
+    padding: var(--spacing-medium) var(--spacing-large);
+    border-radius: var(--border-radius);
+    font-weight: bold;
     text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 1rem;
-
-    @media (max-width: 640px) {
-      padding: 0.75rem 1.5rem;
-      font-size: 0.95rem;
-    }
   }
 
   .btn-primary {
-    background: var(--accent);
-    color: white;
-    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-    }
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    box-shadow: var(--box-shadow);
   }
 
   .btn-secondary {
-    background: transparent;
-    color: var(--accent);
-    border: 2px solid var(--accent);
+    background-color: transparent;
+    color: var(--color-accent);
+    border: var(--border-width) solid var(--color-accent);
 
-    &:hover {
-      background: var(--accent);
-      color: white;
-      transform: translateY(-2px);
+    &:hover,
+    &:active {
+      background-color: var(--color-accent);
+      color: var(--color-white);
     }
-  }
-
-  .full-width {
-    width: 100%;
-    text-align: center;
   }
 </style>

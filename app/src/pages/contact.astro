@@ -1,17 +1,25 @@
 ---
-import Layout from "~/layouts/BlogPost.astro";
+import Hero from "~/components/sections/Hero.astro";
 import { AUTHOR } from "~/consts";
+import BaseLayout from "~/layouts/BaseLayout.astro";
 
-const description =
-  "Let's create something amazing together! Reach out to me via email or phone for collaborations, inquiries, or just to say hi";
-const cleanPhone = AUTHOR.phone.replace(/[\s\-\(\)]/g, ""); // remove all spaces, dashes, and parentheses
+const description = "Let's create something amazing together!";
+const cleanPhone = AUTHOR.phone.replace(/[\s\-()]/g, ""); // remove all spaces, dashes, and parentheses
 ---
 
-<Layout title="Contact Me" description={description}>
-  <p>{description}</p>
-
+<BaseLayout title="Contact Me" description={description}>
+  <Hero title="Contact Me" description={description} disableLogo />
+  
   <div class="contact-methods">
-    <p><strong>Email:</strong> <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a></p>
-    <p><strong>Phone:</strong> <a href={`tel:${cleanPhone}`}>{AUTHOR.phone}</a></p>
+      <p>Reach out to me via email or phone for collaborations, inquiries, or just to say hi</p>
+      
+      <p>
+        <strong>Email:</strong>
+        <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>
+      </p>
+      <p>
+      <strong>Phone:</strong>
+      <a href={`tel:${cleanPhone}`}>{AUTHOR.phone}</a>
+    </p>
   </div>
-</Layout>
+</BaseLayout>

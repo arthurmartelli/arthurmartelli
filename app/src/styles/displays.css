@@ -1,0 +1,28 @@
+[display-container-grid] {
+  display: grid;
+  grid-template-columns: var(
+      --grid-columns,
+      repeat(var(--columns, auto-fit), 1fr)
+    );
+
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-medium);
+
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+
+  @media (max-width: 720px) {
+    --grid-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+[display-simple-flex] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-medium);
+
+  align-items: center;
+  justify-content: center;
+}
